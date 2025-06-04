@@ -8,8 +8,6 @@ else
     exit 1
 fi
 
-export PATH=~/miniforge3/bin:$PATH
-
 if ! command -v mamba &> /dev/null; then
     echo "Mamba not found. Ensure Miniforge is installed and PATH set."
     exit 1
