@@ -18,7 +18,7 @@ if [ "$INSTALL_MINIFORGE" = "y" ]; then
     URL="https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
     aria2c -x 16 -s 16 "$URL"
     bash Miniforge3-$(uname)-$(uname -m).sh -b
-    export PATH=~/miniforge3/bin:$PATH
+    echo 'export PATH=~/miniforge3/bin:$PATH' >> ~/.bashrc
 fi
 
 cat > env_vars.sh << EOF
