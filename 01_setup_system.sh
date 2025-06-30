@@ -51,3 +51,5 @@ export SNPE_VERSION="$SNPE_VERSION"
 EOF
 
 echo "Basic system setup complete. Next: run 02_create_env.sh"
+
+bash
