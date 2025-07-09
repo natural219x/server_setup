@@ -12,7 +12,7 @@ which python
 which pip
 
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
-pip install transformers diffusers tqdm timm wandb accelerate ninja packaging tensorboard easydict scikit-learn opencv-python datasets fvcore ptflops s3fs webdataset glances[gpu] matplotlib
+pip install tiktoken ipykernel transformers diffusers tqdm timm wandb accelerate ninja packaging tensorboard easydict scikit-learn opencv-python datasets fvcore ptflops s3fs webdataset glances[gpu] matplotlib
 pip install onnx onnxsim onnxruntime
 
 if [ "$INSTALL_FLASH_ATTN" = "y" ]; then
