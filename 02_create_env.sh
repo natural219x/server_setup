@@ -26,6 +26,7 @@ fi
 mamba create -n "$ENV_NAME" python=$PY_VER -y
 # Setup conda for activation & activate environment
 source "$(conda info --base)/etc/profile.d/conda.sh"
+source env_vars.sh
 conda activate "$ENV_NAME"
 
 echo "Activated conda environment: $ENV_NAME"
