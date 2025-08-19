@@ -1,0 +1,1 @@
+pip install "langchain[all]" openai transformers torch huggingface_hub tiktoken pydantic requests chromadb faiss-cpu pinecone-client qdrant-client weaviate-client unstructured pdfplumber beautifulsoup4
