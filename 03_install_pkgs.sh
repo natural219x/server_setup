@@ -17,7 +17,7 @@ pip install onnx onnxsim onnxruntime
 pip install llms_from_scratch tokenizers
 
 if [ "$INSTALL_FLASH_ATTN" = "y" ]; then
-    pip install flash-attn --no-build-isolation
+    MAX_JOBS=16 pip install flash-attn --no-build-isolation
 fi
 
 echo "All Python packages installed."
