@@ -12,6 +12,7 @@ which python
 which pip
 
 pip install torch torchvision torchaudio #--index-url https://download.pytorch.org/whl/cu128
+pip install unsloth
 pip install tiktoken ipykernel transformers diffusers tqdm timm wandb accelerate ninja packaging tensorboard easydict scikit-learn opencv-python datasets fvcore ptflops s3fs webdataset glances[gpu] matplotlib
 pip install onnx onnxsim onnxruntime
 pip install llms_from_scratch tokenizers
