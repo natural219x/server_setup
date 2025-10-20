@@ -18,15 +18,16 @@ PIP_BIN=$(which pip)
 echo "Using Python: $PYTHON_BIN"
 echo "Using pip: $PIP_BIN"
 
-# Torch CUDA install (default)
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
-
-# TPU Support
 if [ "$INSTALL_TPU_SUPPORT" = "y" ]; then
+    # Install CPU torch & XLA
+    pip install torch==2.3.0 torchvision torchaudio  # Don't use CUDA wheels
     pip install torch_xla[tpu] --extra-index-url https://storage.googleapis.com/tpu-pytorch/xla-release
     pip uninstall -y tensorflow || true
     pip install tensorflow-cpu
-    echo "Installed torch_xla TPU support and replaced tensorflow with tensorflow-cpu."
+    echo "Installed torch/torch_xla for TPU (no CUDA)."
+else
+    # Default: CUDA wheels
+    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
 fi
 
 if [ "$INSTALL_FLASH_ATTN" = "y" ]; then
