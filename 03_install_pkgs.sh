@@ -20,8 +20,7 @@ echo "Using pip: $PIP_BIN"
 
 if [ "$INSTALL_TPU_SUPPORT" = "y" ]; then
     # Install CPU torch & XLA
-    pip install torch==2.3.0 torchvision torchaudio  # Don't use CUDA wheels
-    pip install torch_xla[tpu] --extra-index-url https://storage.googleapis.com/tpu-pytorch/xla-release
+    pip install torch torchvision torchaudio torch_xla[tpu] --extra-index-url https://storage.googleapis.com/tpu-pytorch/xla-release # Don't use CUDA wheels
     pip uninstall -y tensorflow || true
     pip install tensorflow-cpu
     echo "Installed torch/torch_xla for TPU (no CUDA)."
