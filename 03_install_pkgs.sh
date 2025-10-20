@@ -8,17 +8,40 @@ else
     exit 1
 fi
 
-which python
-which pip
+# Activate environment
+source "$(conda info --base)/etc/profile.d/conda.sh"
+conda activate "$ENV_NAME"
 
+NO_CUDA_MSG="# Install ^^^ only if CUDA GPU present or skip torch install"
+PYTHON_BIN=$(which python)
+PIP_BIN=$(which pip)
+echo "Using Python: $PYTHON_BIN"
+echo "Using pip: $PIP_BIN"
+
+# Torch CUDA install (default)
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+
+# TPU Support
+if [ "$INSTALL_TPU_SUPPORT" = "y" ]; then
+    pip install torch_xla[tpu] --extra-index-url https://storage.googleapis.com/tpu-pytorch/xla-release
+    pip uninstall -y tensorflow || true
+    pip install tensorflow-cpu
+    echo "Installed torch_xla TPU support and replaced tensorflow with tensorflow-cpu."
+fi
+
 if [ "$INSTALL_FLASH_ATTN" = "y" ]; then
     MAX_JOBS=16 pip install flash-attn --no-build-isolation
 fi
-pip install tf-keras
-pip install unsloth
-pip install thop tiktoken ipykernel transformers diffusers tqdm timm wandb accelerate ninja packaging tensorboard easydict scikit-learn opencv-python datasets fvcore ptflops s3fs webdataset glances[gpu] matplotlib onnx onnxsim onnxruntime llms_from_scratch tokenizers
 
+pip install tf-keras
+
+if [ "$INSTALL_UNSLOTH" = "y" ]; then
+    pip install unsloth[cu118]
+else
+    pip install unsloth
+fi
+
+pip install thop tiktoken ipykernel transformers diffusers tqdm timm wandb accelerate ninja packaging tensorboard easydict scikit-learn opencv-python datasets fvcore ptflops s3fs webdataset glances[gpu] matplotlib onnx onnxsim onnxruntime llms_from_scratch tokenizers
 
 echo "All Python packages installed."
 
