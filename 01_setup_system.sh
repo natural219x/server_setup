@@ -8,6 +8,7 @@ sudo apt update
 sudo apt install -y aria2 libunwind8
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+nvm install 24
 
 sudo ln -sf /lib/x86_64-linux-gnu/libunwind.so.8 /lib/x86_64-linux-gnu/libunwind.so.1 2>/dev/null || echo "Warning: Could not create symbolic link for libunwind.so.1. Continuing."
 
