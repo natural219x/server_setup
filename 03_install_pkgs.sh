@@ -26,7 +26,7 @@ if [ "$INSTALL_TPU_SUPPORT" = "y" ]; then
     echo "Installed torch/torch_xla for TPU (no CUDA)."
 else
     # Default: CUDA wheels
-    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu130
 fi
 
 if [ "$INSTALL_FLASH_ATTN" = "y" ]; then
